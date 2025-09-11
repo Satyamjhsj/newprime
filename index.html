@@ -1,198 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Device Registration & Setup Guide</title>
-  <meta name="description" content="Step-by-step guide to set up and activate Prime Video on smart TVs and streaming devices without any copyright issues.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MyPrimeTV — TV Guide & Activation Support</title>
+  <meta name="description" content="TV guide, activation help, and troubleshooting support for smart TVs and streaming devices. Support email: support@primejtv.site" />
+  <!-- Tailwind Play CDN (no build step) -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f7faff, #e3edf9);
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 20px;
-      line-height: 1.6em;
-    }
-    .container {
-      background-color: #ffffff;
-      border-radius: 12px;
-      padding: 25px 20px;
-      width: 100%;
-      max-width: 900px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      font-size: 26px;
-      color: #2c3e50;
-      margin-bottom: 8px;
-      text-align: center;
-    }
-    .instructions {
-      font-size: 14px;
-      color: #555;
-      text-align: center;
-    }
-    .code-input input[type="text"] {
-      width: 100%;
-      padding: 14px;
-      margin-top: 20px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-      text-align: center;
-    }
-    input::placeholder {
-      font-weight: 500;
-      color: #aaa;
-    }
-    .register-button {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    .register-button button {
-      width: 60%;
-      padding: 10px;
-      font-size: 15px;
-      font-weight: bold;
-      background-color: #3498db;
-      color: #fff;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    .register-button button:hover {
-      background-color: #217dbb;
-      transform: scale(1.03);
-    }
-    .steps, .guide {
-      margin-top: 30px;
-    }
-    .steps h3, .guide h3 {
-      font-size: 18px;
-      color: #3498db;
-      margin-bottom: 10px;
-    }
-    .steps ul, .guide ul {
-      padding-left: 20px;
-    }
-    .steps li, .guide li {
-      margin-bottom: 10px;
-      font-size: 14px;
-      color: #333;
-    }
-    .guide-section {
-      background: #f8f9fa;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 15px;
-      border-left: 5px solid #3498db;
-    }
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 22px;
-      }
-      .register-button button {
-        width: 80%;
-      }
-    }
-    @media (max-width: 480px) {
-      .container {
-        padding: 15px;
-      }
-      h1 {
-        font-size: 20px;
-      }
-      .register-button button {
-        width: 90%;
-        font-size: 14px;
-      }
-    }
+    /* Small visual polish */
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Register Your Device</h1>
-    <br>
-    <p class="instructions">Easily link your smart TV or streaming device to your account</p>
-    <br>
-    <p class="instructions">Enter the code displayed on your device to start streaming</p>
+<body class="bg-gradient-to-b from-slate-50 to-white text-slate-900">
+  <!-- Header -->
+  <header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold">M</div>
+      <div>
+        <h1 class="text-lg font-semibold">MyPrimeTV</h1>
+        <p class="text-xs text-slate-500">TV Guide & Activation Support (USA)</p>
+      </div>
+    </a>
+    <nav class="hidden md:flex gap-6 items-center text-sm">
+      <a href="#guides" class="hover:text-indigo-600">Guides</a>
+      <a href="#activation" class="hover:text-indigo-600">Activation</a>
+      <a href="#faq" class="hover:text-indigo-600">FAQ</a>
+      <a href="#contact" class="text-white bg-indigo-600 px-4 py-2 rounded-lg">Contact Support</a>
+    </nav>
+    <button id="mobileBtn" class="md:hidden p-2 rounded-md border">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </header>
 
-    <div class="code-input">
-      <input type="text" placeholder="Enter Code" />
-    </div>
-
-    <div class="register-button">
-      <button id="registerButton">Register</button>
-    </div>
-    <br>
-
-    <div class="steps">
-      <h3>Quick Registration Steps</h3>
-      <ul>
-        <li>Open the streaming app on your TV or device.</li>
-        <li>Select “Register on the website.”</li>
-        <li>Note the code displayed on your screen.</li>
-        <li>Visit the registration page and enter your code.</li>
-      </ul>
-    </div>
-
-    <div class="guide">
-      <h3>Setup Guide for Popular Devices</h3>
-      <div class="guide-section">
-        <strong>1. Fire TV / Stick</strong>
-        <ul>
-          <li>Open the app from the main menu.</li>
-          <li>If not installed, search and add it from the app store.</li>
-          <li>Sign in to start streaming.</li>
-        </ul>
-      </div>
-      <div class="guide-section">
-        <strong>2. Roku</strong>
-        <ul>
-          <li>Navigate to Streaming Channels → Search for the app.</li>
-          <li>Add and launch the channel.</li>
-          <li>Sign in or use the activation code method.</li>
-        </ul>
-      </div>
-      <div class="guide-section">
-        <strong>3. Apple TV</strong>
-        <ul>
-          <li>Search and install the app from the App Store.</li>
-          <li>Open it and log in or enter the displayed code online.</li>
-        </ul>
-      </div>
-      <div class="guide-section">
-        <strong>4. Android TV</strong>
-        <ul>
-          <li>Find and install the app from Google Play Store.</li>
-          <li>Launch and log in to your account.</li>
-        </ul>
-      </div>
-      <div class="guide-section">
-        <strong>5. Smart TVs</strong>
-        <ul>
-          <li>Check if the app is pre-installed or download it from the TV’s app store.</li>
-          <li>Open and log in to enjoy streaming.</li>
-        </ul>
-      </div>
-    </div>
+  <!-- Mobile nav -->
+  <div id="mobileNav" class="md:hidden px-6 hidden">
+    <nav class="flex flex-col gap-3 mb-6">
+      <a href="#guides" class="py-2">Guides</a>
+      <a href="#activation" class="py-2">Activation</a>
+      <a href="#faq" class="py-2">FAQ</a>
+      <a href="#contact" class="py-2 text-indigo-600 font-semibold">Contact Support</a>
+    </nav>
   </div>
 
+  <!-- Hero -->
+  <main class="max-w-6xl mx-auto px-6">
+    <section class="grid md:grid-cols-2 gap-8 items-center py-12">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">Fast, safe TV activation help & clear channel guides</h2>
+        <p class="mt-4 text-slate-600">Step-by-step activation assistance for smart TVs and streaming devices. We only provide legal support and manufacturer-approved setup guidance.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#activation" class="inline-block bg-indigo-600 text-white px-5 py-3 rounded-lg">Get Activation Help</a>
+          <a href="#guides" class="inline-block border border-indigo-200 px-5 py-3 rounded-lg">Browse Guides</a>
+        </div>
+
+        <div class="mt-6 text-sm text-slate-500">
+          <strong>Support email:</strong> <a href="mailto:support@primejtv.site" class="text-indigo-600">support@primejtv.site</a>
+        </div>
+      </div>
+
+      <div class="bg-white glass rounded-2xl p-6 shadow">
+        <h3 class="font-semibold text-lg">Quick Setup Checklist</h3>
+        <ul class="mt-3 grid gap-2">
+          <li class="flex gap-3 items-start">
+            <div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center">1</div>
+            <div>
+              <div class="font-medium">Connect to the internet</div>
+              <div class="text-sm text-slate-500">Confirm your TV or device is on the same Wi‑Fi network.</div>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center">2</div>
+            <div>
+              <div class="font-medium">Run the activation flow</div>
+              <div class="text-sm text-slate-500">Open the app and follow the official on-screen instructions.</div>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center">3</div>
+            <div>
+              <div class="font-medium">Contact provider if needed</div>
+              <div class="text-sm text-slate-500">If activation requires an account or code, contact the official service provider.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Guides -->
+    <section id="guides" class="py-8">
+      <h3 class="text-2xl font-semibold">Popular Guides</h3>
+      <div class="mt-4 grid md:grid-cols-3 gap-4">
+        <article class="p-4 bg-white rounded-lg shadow-sm">
+          <h4 class="font-medium">How to Activate a Smart TV App</h4>
+          <p class="text-sm text-slate-500 mt-2">Open the official app, choose "Sign in", then follow the on-screen activation steps or visit the provider's activation page.</p>
+          <a class="mt-3 inline-block text-sm" href="#">Read more →</a>
+        </article>
+        <article class="p-4 bg-white rounded-lg shadow-sm">
+          <h4 class="font-medium">Factory Reset & Reinstall</h4>
+          <p class="text-sm text-slate-500 mt-2">If an app misbehaves, a reset and reinstall from the official store often fixes it.</p>
+          <a class="mt-3 inline-block text-sm" href="#">Read more →</a>
+        </article>
+        <article class="p-4 bg-white rounded-lg shadow-sm">
+          <h4 class="font-medium">Wi‑Fi & Network Troubleshooting</h4>
+          <p class="text-sm text-slate-500 mt-2">Tips to confirm router, DNS, and device network settings are correct.</p>
+          <a class="mt-3 inline-block text-sm" href="#">Read more →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Activation (accordion) -->
+    <section id="activation" class="py-8">
+      <h3 class="text-2xl font-semibold">Activation Help</h3>
+      <p class="text-sm text-slate-600 mt-2">Choose your device and follow the generic, legal steps below. We do not assist with pirated or illegal activations.</p>
+
+      <div class="mt-4 space-y-3">
+        <button class="w-full p-4 bg-white rounded-lg shadow flex justify-between items-center" data-acc>
+          <span class="text-left">
+            <div class="font-medium">Activate on Smart TV</div>
+            <div class="text-sm text-slate-500">Official app activation flow</div>
+          </span>
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06 0L10 10.92l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="p-4 bg-white rounded-lg shadow-sm hidden" data-panel>
+          <ol class="list-decimal list-inside text-sm text-slate-600">
+            <li>Open the official app and select Sign In / Activate.</li>
+            <li>Follow the on‑screen instructions or visit the provider’s activation URL shown on-screen.</li>
+            <li>If an activation code is supplied, use it only on the official provider site.</li>
+            <li>Contact the official service provider if the code or account is required.</li>
+          </ol>
+        </div>
+
+        <button class="w-full p-4 bg-white rounded-lg shadow flex justify-between items-center" data-acc>
+          <span class="text-left">
+            <div class="font-medium">Activate on Streaming Device</div>
+            <div class="text-sm text-slate-500">Roku, Fire TV, Apple TV, Chromecast</div>
+          </span>
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06 0L10 10.92l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="p-4 bg-white rounded-lg shadow-sm hidden" data-panel>
+          <ol class="list-decimal list-inside text-sm text-slate-600">
+            <li>Install the official streaming app from the device store.</li>
+            <li>Open the app and follow the official activation flow.</li>
+            <li>Do not use unofficial downloads or modified apps.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-8">
+      <h3 class="text-2xl font-semibold">FAQ</h3>
+      <div class="mt-4 space-y-3">
+        <details class="bg-white p-4 rounded-lg shadow-sm">
+          <summary class="font-medium">Do you provide activation codes?</summary>
+          <p class="mt-2 text-sm text-slate-600">No. We provide setup guidance and links to official providers. For account or code issues contact the service provider directly.</p>
+        </details>
+        <details class="bg-white p-4 rounded-lg shadow-sm">
+          <summary class="font-medium">Is this legal?</summary>
+          <p class="mt-2 text-sm text-slate-600">Yes. We only help with manufacturer- and provider-approved setup and activation steps. We do not assist with piracy or illegal workarounds.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contact / Support -->
+    <section id="contact" class="py-8">
+      <h3 class="text-2xl font-semibold">Contact Support</h3>
+      <p class="text-sm text-slate-600 mt-2">For help email our support team at <a href="mailto:support@primejtv.site" class="text-indigo-600">support@primejtv.site</a>.</p>
+
+      <div class="mt-4 max-w-xl">
+        <!-- Simple contact form that opens user's email client -->
+        <form onsubmit="openMail(event)" class="bg-white p-4 rounded-lg shadow-sm">
+          <!-- intentionally minimal to limit sensitive data collection -->
+          <div class="mb-3">
+            <label class="block text-sm font-medium">Issue summary (short)</label>
+            <input id="issue" required class="mt-2 w-full border rounded px-3 py-2" placeholder="e.g. Activation code not accepted" />
+          </div>
+          <div class="mb-3">
+            <label class="block text-sm font-medium">Your email (so we can reply)</label>
+            <input id="userEmail" type="email" required class="mt-2 w-full border rounded px-3 py-2" placeholder="you@example.com" />
+          </div>
+          <div class="flex gap-3">
+            <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded">Send to Support</button>
+            <a href="mailto:support@primejtv.site" class="px-4 py-2 border rounded">Open Mail App</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="py-12 text-sm text-slate-500">
+      <div class="border-t pt-6">© MyPrimeTV — We provide lawful setup help only. Do not use this site to ask for or distribute copyrighted content or illegal activation methods.</div>
+    </footer>
+  </main>
+
   <script>
-    document.getElementById("registerButton").addEventListener("click", function () {
-      window.location.href = "index2.html";
+    // Mobile nav toggle
+    document.getElementById('mobileBtn').addEventListener('click', function(){
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('hidden');
     });
+
+    // Simple accordion
+    document.querySelectorAll('[data-acc]').forEach(btn => {
+      btn.addEventListener('click', function(){
+        const panel = this.nextElementSibling;
+        const isHidden = panel.classList.contains('hidden');
+        document.querySelectorAll('[data-panel]').forEach(p=>p.classList.add('hidden'));
+        if(isHidden) panel.classList.remove('hidden');
+      });
+    });
+
+    // Contact form opens mailto with prefilled subject/body
+    function openMail(e){
+      e.preventDefault();
+      const issue = encodeURIComponent(document.getElementById('issue').value);
+      const email = encodeURIComponent(document.getElementById('userEmail').value);
+      const subject = encodeURIComponent('Support request — MyPrimeTV');
+      const body = encodeURIComponent('Issue: '+ issue + '\nUser email: ' + email + '\n\nPlease reply to the user.');
+      window.location.href = 'mailto:support@primejtv.site?subject='+subject+'&body='+body;
+    }
   </script>
 </body>
 </html>
